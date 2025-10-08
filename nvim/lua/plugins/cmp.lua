@@ -1,10 +1,9 @@
 return {
-  -- (ตรวจสอบว่าชื่อปลั๊กอินถูกต้องใน config ของคุณ)
+  -- Use Tab key to Complete Complete
   {
     "saghen/blink.cmp",
     opts = {
       keymap = {
-        -- ตั้งค่า preset เป็น "super-tab"
         preset = "super-tab",
       },
     },
