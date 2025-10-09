@@ -13,3 +13,11 @@ keymap.set("n", "sl", "<C-w>l")
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
+
+-- Toggle Snacks Explorer
+keymap.set("n", "<Tab>", function()
+  require("snacks").explorer()
+end, opts)
+
+-- Coppy to Clipboard
+vim.opt.clipboard = "unnamedplus"
