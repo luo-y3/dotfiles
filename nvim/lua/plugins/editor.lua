@@ -1,7 +1,13 @@
 return {
+  {
+    "nvim-mini/mini.hipatterns",
+    event = "BufReadPre",
+    opts = {},
+  },
 
   {
     "nvim-telescope/telescope.nvim",
+    priority = 1000,
     dependencies = {
       {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -10,15 +16,6 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
     },
     keys = {
-      {
-        "<leader>fP",
-        function()
-          require("telescope.builtin").find_files({
-            cwd = require("lazy.core.config").options.root,
-          })
-        end,
-        desc = "Find Plugin File",
-      },
       {
         ";f",
         function()
@@ -34,9 +31,7 @@ return {
         ";r",
         function()
           local builtin = require("telescope.builtin")
-          builtin.live_grep({
-            additional_args = { "--hidden" },
-          })
+          builtin.live_grep()
         end,
         desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
@@ -47,14 +42,6 @@ return {
           builtin.buffers()
         end,
         desc = "Lists open buffers",
-      },
-      {
-        ";t",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.help_tags()
-        end,
-        desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
       },
       {
         ";;",
@@ -79,14 +66,6 @@ return {
           builtin.treesitter()
         end,
         desc = "Lists Function names, variables, from Treesitter",
-      },
-      {
-        ";c",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.lsp_incoming_calls()
-        end,
-        desc = "Lists LSP incoming calls for word under the cursor",
       },
       {
         "sf",
@@ -146,9 +125,6 @@ return {
               -- your custom normal mode mappings
               ["N"] = fb_actions.create,
               ["h"] = fb_actions.goto_parent_dir,
-              ["/"] = function()
-                vim.cmd("startinsert")
-              end,
               ["<C-u>"] = function(prompt_bufnr)
                 for i = 1, 10 do
                   actions.move_selection_previous(prompt_bufnr)
@@ -159,8 +135,6 @@ return {
                   actions.move_selection_next(prompt_bufnr)
                 end
               end,
-              ["<PageUp>"] = actions.preview_scrolling_up,
-              ["<PageDown>"] = actions.preview_scrolling_down,
             },
           },
         },
@@ -169,42 +143,5 @@ return {
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("file_browser")
     end,
-  },
-
-  {
-    "kazhala/close-buffers.nvim",
-    event = "VeryLazy",
-    keys = {
-      {
-        "<leader>th",
-        function()
-          require("close_buffers").delete({ type = "hidden" })
-        end,
-        "Close Hidden Buffers",
-      },
-      {
-        "<leader>tu",
-        function()
-          require("close_buffers").delete({ type = "nameless" })
-        end,
-        "Close Nameless Buffers",
-      },
-    },
-  },
-
-  {
-    "saghen/blink.cmp",
-    opts = {
-      completion = {
-        menu = {
-          winblend = vim.o.pumblend,
-        },
-      },
-      signature = {
-        window = {
-          winblend = vim.o.pumblend,
-        },
-      },
-    },
   },
 }
