@@ -1,3 +1,4 @@
+local func = require("vim.func")
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -23,12 +24,21 @@ end, opts)
 vim.opt.clipboard = "unnamedplus"
 
 -- Fast Comment
-keymap.set("n", "<A-/>", function()
-  require("Comment.api").toggle.linewise.current()
-end, opts)
+local api = require("Comment.api")
 
-keymap.set("v", "<A-/>", function()
-  local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-  vim.api.nvim_feedkeys(esc, "nx", false)
-  require("Comment.api").toggle.linewise.current()
-end, opts)
+-- Normal mode: Alt + / → toggle comment
+vim.keymap.set("n", "<A-/>", function()
+  api.toggle.linewise.current()
+end, { noremap = true, silent = true })
+
+-- Insert mode: Alt + / → comment line without leaving insert mode
+vim.keymap.set("i", "<A-/>", function()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "nx", false)
+  api.toggle.linewise.current()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("A", true, false, true), "nx", false)
+end, { noremap = true, silent = true })
+
+-- Visual mode: Alt + / → comment selected lines
+vim.keymap.set("v", "<A-/>", function()
+  api.toggle.linewise(vim.fn.visualmode())
+end, { noremap = true, silent = true })
