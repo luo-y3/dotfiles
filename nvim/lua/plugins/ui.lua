@@ -23,12 +23,15 @@ return {
       })
       table.insert(opts.routes, 1, {
         filter = {
-          cond = function()
-            return not focused
-          end,
+          -- cond = function()
+          -- return not focused
+          -- end,
+          -- },
+          -- view = "notify_send",
+          -- opts = { stop = false },
+          event = "notify",
         },
-        view = "notify_send",
-        opts = { stop = false },
+        opts = { skip = true },
       })
 
       opts.commands = {
@@ -57,6 +60,7 @@ return {
     "rcarriga/nvim-notify",
     opts = {
       timeout = 5000,
+      background_colour = "Normal",
     },
   },
 
