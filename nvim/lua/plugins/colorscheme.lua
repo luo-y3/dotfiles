@@ -14,12 +14,12 @@ return {
           SignColumn = { bg = "None" },
           VertSplit = { bg = "None" },
           StatusLine = { bg = "None" },
-          LineNr = { bg = "None" },
+          LineNr = { fg = "#777666", bg = "None" },
           Folded = { bg = "None" },
           FoldColumn = { bg = "None" },
           CursorLine = { bg = "None" },
-          --CursorLineNr = { bg = "None" },
-          CursorColumn = { bg = "None" },
+          CursorLineNr = { bg = "None" },
+          -- CursorColumn = { bg = "None" },
           EndOfBuffer = { bg = "None" },
           ColorColumn = { bg = "None" },
 
@@ -32,17 +32,21 @@ return {
           TelescopeNormal = { bg = "None" },
           TelescopeBorder = { bg = "None" },
           LualineNormal = { bg = "None" },
+
+          -- BufferLine
           BufferLineBackground = { bg = "None" },
           BufferLineSeparator = { bg = "None" },
+          BufferLineBufferSelected = { bg = "None" },
+          BufferLineCloseButton = { bg = "None" },
+          BufferLineCloseButtonSelected = { bg = "None" },
+          BufferLineFill = { bg = "None" },
+          BufferLineHint = { bg = "None" },
+          BufferLineIndicatorSelected = { bg = "None" },
         },
       })
 
-      vim.cmd.colorscheme("ayu")
-
       -- Make Static Cursor color
-      vim.cmd([[
-      highlight Cursor guifg=NONE guibg=#d2d4d6
-      ]])
+      -- vim.api.nvim.set_hl(0, "Cursor", { fg = "#888888" })
 
       -- Make Cursor shapes
       vim.opt.guicursor = table.concat({
@@ -51,6 +55,8 @@ return {
         "r-cr:hor20-Cursor", -- Replace Horizontal line
         "o:hor50-Cursor", -- Operator pending Horizontal line
       }, ",")
+
+      vim.cmd.colorscheme("ayu")
     end,
   },
 }
