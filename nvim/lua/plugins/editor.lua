@@ -150,4 +150,108 @@ return {
       require("Comment").setup()
     end,
   },
+  {
+    "kazhala/close-buffers.nvim",
+    event = "VeryLazy",
+    keys = {
+      {
+        "<leader>th",
+        function()
+          require("close_buffers").delete({ type = "hidden" })
+        end,
+        "Close Hidden Buffers",
+      },
+      {
+        "<leader>tu",
+        function()
+          require("close_buffers").delete({ type = "nameless" })
+        end,
+        "Close Nameless Buffers",
+      },
+    },
+  },
+
+  -- Tab to complete code
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        preset = "super-tab",
+      },
+    },
+  },
+
+  {
+    "onsails/lspkind.nvim",
+    config = function()
+      require("lspkind").init({
+        preset = "default",
+        symbol_map = {
+          Text = "",
+          Method = "ƒ",
+          Function = "",
+          Constructor = "",
+          Field = "",
+          Variable = "",
+          Class = "ﴯ",
+          Interface = "瑩",
+          Module = "",
+          Property = "",
+          Unit = "",
+          Value = "",
+          Enum = "",
+          Keyword = "",
+          Snippet = "",
+          Color = "",
+          File = "",
+          Reference = "",
+          Folder = "",
+          EnumMember = "",
+          Constant = "",
+          Struct = "פּ",
+          Event = "",
+          Operator = "",
+          TypeParameter = "",
+        },
+      })
+    end,
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-nvim-lsp",
+      "onsails/lspkind-nvim",
+    },
+    config = function()
+      local cmp = require("cmp")
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+          end,
+        },
+        mapping = {
+          ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-u>"] = cmp.mapping.scroll_docs(4),
+          ["<C-y>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.close(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        },
+        sources = {
+          { name = "nvim_lsp" },
+          { name = "buffer" },
+        },
+        formatting = {
+          format = function(entry, vim_item)
+            vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
+            return vim_item
+          end,
+        },
+      })
+    end,
+  },
 }
