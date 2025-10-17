@@ -9,7 +9,7 @@ return {
         "shfmt",
         "tailwindcss-language-server",
         "typescript-language-server",
-        "css-lsp",
+        "cssls",
         "rust-analyzer",
       })
     end,
