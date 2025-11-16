@@ -2,16 +2,14 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
-      "rcarriga/nvim-dap-ui", -- UI สำหรับ Debugger
-      "williamboman/mason-nvim-dap", -- เชื่อม Mason กับ DAP
+      "rcarriga/nvim-dap-ui", 
+      "williamboman/mason-nvim-dap", 
     },
     config = function()
-      -- ตั้งค่า DAP UI
       require("nvim-dap-ui").setup()
       local dap = require("dap")
       local dapui = require("dapui")
 
-      -- Hook เพื่อเปิด/ปิด DAP UI โดยอัตโนมัติ
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
