@@ -18,6 +18,11 @@ return {
         "gitignore",
         "http",
         "markdown",
+        "c",
+        "cpp",
+        "gdscript",
+        "c_sharp",
+        "razor",
       },
 
       highlight = { enable = true },
