@@ -3,7 +3,7 @@ return {
     "brenoprata10/nvim-highlight-colors",
     event = "BufReadPre",
     opts = {
-      render = 'background',
+      render = "background",
       enable_hex = true,
       enable_short_hex = true,
       enable_rgb = true,
@@ -43,8 +43,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.live_grep()
         end,
-        desc =
-        "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
       {
         "\\\\",

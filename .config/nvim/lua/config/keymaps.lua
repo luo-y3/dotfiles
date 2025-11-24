@@ -1,4 +1,3 @@
-local func = require("vim.func")
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -16,9 +15,9 @@ keymap.set("n", "sl", "<C-w>l")
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Toggle Snacks Explorer
-keymap.set("n", "<Tab>", function()
-  require("snacks").explorer()
-end, opts)
+-- keymap.set("n", "<Tab>", function()
+--   require("snacks").explorer()
+-- end, opts)
 
 -- Coppy to Clipboard
 vim.opt.clipboard = "unnamedplus"

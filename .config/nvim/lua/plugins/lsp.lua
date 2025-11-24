@@ -16,21 +16,11 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
-        "rust-analyzer",
         "jdtls",
         "clangd",
-        "codelldb",
         "pyright",
-        "roslyn",
-        "rzls",
       })
     end,
-  },
-
-  {
-    "seblyng/roslyn.nvim",
-    ft = "cs",
-    opts = {},
   },
 
   "nvim-cmp",

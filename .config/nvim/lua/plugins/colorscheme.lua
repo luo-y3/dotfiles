@@ -1,5 +1,3 @@
--- ~/.config/nvim/lua/plugins/colorscheme.lua
-
 return {
   {
     "luo-y3/zen-respite.nvim",
@@ -7,11 +5,9 @@ return {
     priority = 1000,
     config = function()
       require("zen-respite").setup({
-        transparent = true,
-        -- theme = "zen_clay",
+        transparent = true, -- Optional for transparency.
       })
       vim.cmd.colorscheme("zen-respite")
     end,
   },
 }
-
