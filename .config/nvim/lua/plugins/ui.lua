@@ -82,7 +82,7 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        theme = "zen_resprite",
+        theme = "zen_sight",
         -- theme = "solarized_dark",
         component_separators = "",
         section_separators = { left = "", right = "" },

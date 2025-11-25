@@ -1,13 +1,13 @@
 return {
   {
-    "luo-y3/zen-respite.nvim",
+    "luo-y3/zen-sight.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("zen-respite").setup({
-        transparent = true, -- Optional for transparency.
+      require("zen-sight").setup({
+        tranparent = true,
       })
-      vim.cmd.colorscheme("zen-respite")
+      vim.cmd.colorscheme("zen-sight")
     end,
   },
 }
