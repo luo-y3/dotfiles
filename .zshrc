@@ -28,6 +28,7 @@ alias update="sudo pacman -Syu"
 alias vi="nvim"
 alias cls="clear"
 alias q="exit"
+alias tm="tmux"
 
 # PECO function
 function peco-select-history() {
