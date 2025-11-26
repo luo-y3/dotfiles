@@ -7,9 +7,7 @@
 
 [oh my zsh](https://github.com/ohmyzsh/ohmyzsh) for make it look good
 
->Plugins
-
-External Plugins
+>External Plugins
 
 [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
