@@ -1,0 +1,16 @@
+/**
+ *
+ * Author : 静叶之秋
+ * Github : @luo-y3
+ * 
+ * Colors
+ **/
+
+* {
+    background:     #0F0F0B;
+    background-alt: #4a4f3a;
+    foreground:     #f4f7e6;
+    selected:       #1aa890;
+    active:         #86ac39;
+    urgent:         #d279a3;
+}

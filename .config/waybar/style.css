@@ -1,0 +1,165 @@
+/* Simply remove the @font-face block entirely */
+
+@import 'colors.css';
+
+* {
+  /* GTK will look for these in your system fonts automatically */
+  /* all: unset; */
+  all: unset;
+  font-family: "psudoFont Liga Mono", "JetBrainsMono Nerd Font", "Noto Sans CJK SC", "Source Han Sans SC", "Noto Sans CJK JP", "Noto Color Emoji", sans-serif;
+  font-size: 16px;
+}
+
+window#waybar {
+  background: none;
+  color: @base0;
+}
+
+.modules-left {
+  padding: 2px 2px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.modules-center {
+  padding: 2px 2px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.modules-right {
+  padding: 2px 2px;
+  margin: 2px;
+  border-radius: 10px;
+  /* background: alpha(grey, .6); */
+}
+
+tooltip {
+  background: @base02;
+  color: @base0;
+  padding: 5px 5px;
+  border-radius: 10;
+}
+
+#clock:hover,
+#custom-pacman:hover,
+#custom-notification:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover {
+  transition: all 200ms ease-in-out;
+  color: @base0;
+}
+
+#custom-notification {
+  padding: 0px 5px;
+  transition: all .3s ease-in-out;
+  color: @base0;
+}
+
+#clock {
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+  color: @base0;
+}
+
+
+#workspaces {
+  /* background-color: red; */
+  padding: 5px 55px;
+  margin: 2px 0;
+  transition: all 1050ms ease-in-out;
+}
+
+#workspaces button {
+  transition: all 400ms ease-in-out;
+  background-color: @base01;
+  padding: 2px 10px 2px 6px;
+  margin: 0px 1px;
+  color: @base1;
+  border-radius: 5px;
+  min-width: 15px;
+}
+
+#workspaces button:hover {
+  color: @green;
+}
+
+#workspaces button.active {
+  min-width: 50px;
+  background: @bficonbase;
+  color: @cursor;
+  border: none;
+  border-radius: 10px;
+}
+
+
+#bluetooth {
+  padding: 0px 5px;
+  transition: all .3s ease;
+  color: white;
+
+}
+
+#network {
+  padding: 0px 5px;
+  transition: all .3s ease;
+  color: white;
+
+}
+
+#battery {
+  padding: 0px 5px;
+  margin: 10px 0;
+  transition: all .3s ease;
+  background-color: @green;
+  color: @base03;
+  border-radius: 69;
+
+}
+
+#battery.charging {
+  background-color: @green;
+}
+
+#battery.warning:not(.charging) {
+  background-color: @yellow;
+}
+
+#battery.critical:not(.charging) {
+  background-color: @red;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#cpu,
+#memory,
+#temperature {
+  padding: 0px 5px;
+  transition: all .3s ease;
+  color: white;
+}
+
+
+#tray {
+  padding: 0px 5px;
+  transition: all .3s ease;
+
+}
+
+#tray menu * {
+  padding: 0px 5px;
+  transition: all .3s ease;
+}
+
+#tray menu separator {
+  padding: 0px 5px;
+  transition: all .3s ease;
+}
