@@ -1,0 +1,7 @@
+/* swaync/style.css
+   Theme: earthy-green (static palette — no pywal)
+   Place at: ~/.config/swaync/style.css
+*/
+@import 'colors.css';
+@import 'themes/zen-sight/notifications.css';
+@import 'themes/zen-sight/central_control.css';

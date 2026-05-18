@@ -1,0 +1,28 @@
+/* This is for bg */
+@define-color base03 #0F0F0B;
+@define-color base02 #2e3223;
+@define-color base01 #4a4f3a;
+@define-color base00 #777b63;
+
+/* This is for fg */
+@define-color base3 #5a6625;
+@define-color base2 #98a75a;
+@define-color base1 #d4deb2;
+@define-color base0 #f4f7e6;
+
+/* Palette */
+@define-color yellow #e0b14a;
+@define-color orange #e65e19;
+@define-color red #bd2828;
+@define-color magenta #d279a3;
+@define-color violet #9c81a9;
+@define-color blue #4080bf;
+@define-color cyan #1aa890;
+@define-color green #86ac39;
+@define-color cursor #d6d9c7;
+@define-color visual #3a3e2e;
+@define-color border #575b44;
+@define-color hl #751606;
+@define-color bracket #cb4db0;
+@define-color bficonbase #415a4a;
+@define-color bficonactive #69bf9b;

@@ -1,0 +1,95 @@
+@define-color text @base0;
+@define-color background-alt alpha(@base02, .7);
+@define-color background @base03;
+@define-color selected @base3;
+@define-color hover alpha(@base2, .9);
+@define-color urgent @red;
+
+* {
+
+  /*background-alt:        @color1;      Buttons background */
+  /*selected:              @color2;      Button selected */
+  /*hover:                 @color5;      Hover button */
+  /*urgent:                @color6;      Urgency critical */
+  /*text-selected:         @background; */
+
+  color: @text;
+
+  all: unset;
+  font-family: "psudoFont Liga Mono", "Noto Sans Thai", "Noto Sans CJK SC", "Noto Sans CJK JP", sans-serif;
+  font-size: 13px;
+  transition: all 0.2s ease;
+
+}
+
+.notification-row {
+  outline: none;
+  margin: 6px;
+  /* padding: 0px; */
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  opacity: 1;
+}
+
+.notification {
+  background: @background;
+  border: 1px solid @hover;
+  border-radius: 12px;
+  margin: 6px;
+  padding: 0;
+}
+
+.notification-content {
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.close-button {
+  background: @hover;
+  color: @text;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 11px;
+  border: none;
+  margin: 6px;
+}
+
+.close-button:hover {
+  background: @urgent;
+}
+
+.notification-active-button {
+  background: @background;
+  border: 1px solid @selected;
+  border-radius: 8px;
+  color: @text;
+  padding: 6px 14px;
+  margin: 4px;
+}
+
+.notification-active-button:hover {
+  background: @hover;
+}
+
+.image {
+  border-radius: 8px;
+}
+
+.time {
+  font-size: 11px;
+  color: @text;
+}
+
+.summary {
+  font-weight: 800;
+  font-size: 14px;
+  color: @text;
+}
+
+.body {
+  font-size: 12px;
+  color: @text;
+
+}
