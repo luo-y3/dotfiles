@@ -13,4 +13,7 @@
     selected:       #1aa890;
     active:         #86ac39;
     urgent:         #d279a3;
+    accent:  #89b4fa;   /* สี highlight วันนี้ */
+    comment: #6c7086;   /* สีจางสำหรับ header row */
+    red:     #f38ba8;   /* วันอาทิตย์ */
 }

@@ -5,6 +5,6 @@ theme='style-1'
 
 cliphist list | rofi \
   -dmenu \
-  -i \
+  -display-column 2 \
   -p "Clipboard" \
   -theme ${dir}/${theme}.rasi | cliphist decode | wl-copy
