@@ -1,13 +1,17 @@
 /* Simply remove the @font-face block entirely */
 
-@import 'colors.css';
+@import "colors.css";
 
 * {
   /* GTK will look for these in your system fonts automatically */
   /* all: unset; */
   all: unset;
-  font-family: "psudoFont Liga Mono", "JetBrainsMono Nerd Font", "Noto Sans CJK SC", "Source Han Sans SC", "Noto Sans CJK JP", "Noto Color Emoji", sans-serif;
-  font-size: 16px;
+  font-family:
+    "psudoFont Liga Mono", "JetBrainsMono Nerd Font", "Noto Sans Mono CJK TC",
+    "Noto Sans CJK TC", "Source Han Sans TC", "Noto Sans CJK SC",
+    "Source Han Sans SC", "Noto Sans CJK JP", "Noto Sans Thai",
+    "Noto Color Emoji", sans-serif;
+  font-size: 15px;
 }
 
 window#waybar {
@@ -16,21 +20,21 @@ window#waybar {
 }
 
 .modules-left {
-  padding: 2px 2px;
-  margin: 2px;
-  border-radius: 10px;
+  /* padding: 2px 2px; */
+  /* margin: 2px; */
+  /* border-radius: 10px; */
 }
 
 .modules-center {
   padding: 2px 2px;
-  margin: 2px;
-  border-radius: 10px;
+  /* margin: 2px; */
+  /* border-radius: 10px; */
 }
 
 .modules-right {
-  padding: 2px 2px;
-  margin: 2px;
-  border-radius: 10px;
+  /* padding: 2px 2px; */
+  /* margin: 2px; */
+  /* border-radius: 10px; */
   /* background: alpha(grey, .6); */
 }
 
@@ -41,7 +45,6 @@ tooltip {
   border-radius: 10;
 }
 
-#clock:hover,
 #custom-pacman:hover,
 #custom-notification:hover,
 #bluetooth:hover,
@@ -56,33 +59,31 @@ tooltip {
 
 #custom-notification {
   padding: 0px 5px;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   color: @base0;
 }
 
-#clock {
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 8px;
+#custom-calendar {
+  font-family: "Noto Sans CJK SC";
   color: @base0;
 }
-
 
 #workspaces {
   /* background-color: red; */
-  padding: 5px 55px;
-  margin: 2px 0;
-  transition: all 1050ms ease-in-out;
+  /* min-width: 100px; */
+  /* font-size: 0.1rem; */
+  padding: 0px 2px;
+  margin: 10px 0;
+  border-radius: 66px;
 }
 
 #workspaces button {
-  transition: all 400ms ease-in-out;
-  background-color: @base01;
-  padding: 2px 10px 2px 6px;
+  background-color: @base02;
+  color: transparent;
+  padding: 0px 5px;
   margin: 0px 1px;
-  color: @base1;
-  border-radius: 5px;
-  min-width: 15px;
+  border-radius: 9px;
+  min-width: 9px;
 }
 
 #workspaces button:hover {
@@ -90,36 +91,58 @@ tooltip {
 }
 
 #workspaces button.active {
-  min-width: 50px;
-  background: @bficonbase;
+  min-width: 1.5rem;
+  background: @cyan;
   color: @cursor;
   border: none;
   border-radius: 10px;
+  transition: none;
 }
 
+#window {
+  /* background: @base3; */
+  color: @base0;
+  font-size: 15;
+  border-radius: 99px;
+  /* margin: 7px 0px; */
+  padding: 2px 6px;
+}
 
 #bluetooth {
-  padding: 0px 5px;
-  transition: all .3s ease;
+  padding: 0 10px 0 5px;
+  margin: 2px 0;
+  transition: all 0.3s ease;
   color: white;
+}
 
+#pulseaudio {
+  background-color: @base02;
+  padding: 0 10px 0 5px;
+  margin: 10px 0;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#cava {
+  /* margin: 0 0 0 0; */
+  font-size: 0.7rem;
+  letter-spacing: 1px;
 }
 
 #network {
-  padding: 0px 5px;
-  transition: all .3s ease;
-  color: white;
-
+  border-radius: 3px;
+  padding: 0 5px;
+  margin: 10px 0;
+  transition: all 0.3s ease;
+  color: @base0;
+  background: @base01;
 }
 
 #battery {
   padding: 0px 5px;
   margin: 10px 0;
-  transition: all .3s ease;
   background-color: @green;
   color: @base03;
-  border-radius: 69;
-
+  border-radius: 10px;
 }
 
 #battery.charging {
@@ -143,23 +166,13 @@ tooltip {
 #memory,
 #temperature {
   padding: 0px 5px;
-  transition: all .3s ease;
   color: white;
 }
 
-
-#tray {
-  padding: 0px 5px;
-  transition: all .3s ease;
-
-}
-
-#tray menu * {
-  padding: 0px 5px;
-  transition: all .3s ease;
-}
-
-#tray menu separator {
-  padding: 0px 5px;
-  transition: all .3s ease;
+#custom-fcitx {
+  background: @base01;
+  color: @base0;
+  margin: 10px 2px;
+  padding: 0 4px;
+  border-radius: 3px;
 }

@@ -2,55 +2,78 @@
   "layer": "top",
   "position": "top",
   // "magin-bottom": 10,
-  "spacing": 18,
-  "modules-center": [
-    "clock"
-  ],
-  "modules-left": [
-    "custom/notification",
-    "hyprland/workspaces"
-  ],
+  "spacing": 4,
+  "modules-center": ["custom/calendar"],
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-right": [
-    "network",
+    "cava",
     "pulseaudio",
-    "battery"
+    "custom/notification",
+    "custom/fcitx",
+    "network",
+    "battery",
   ],
-  "clock": {
-    "format": "{:L%H:%M}",
-    "format-alt": "{:L%Y年 %m月 %d日}",
-    "tooltip-format": "<span font='WenQuanYi Zen Hei Mono 12'><big>{:%Y年 %B}</big>\n<tt><small>{calendar}</small></tt></span>",
-    "locale": "zh_CN.UTF-8",
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 3,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#cdd6f4'><b>{}</b></span>",
-        "days": "<span color='#d4deb2'><b>{}</b></span>",
-        "weeks": "<span color='#98a75a'><b>第{}周</b></span>",
-        "weekdays": "<span color='#69bf9b'><b>  日   一   二    三    四   五    六 </b></span>",
-        "today": "<span color='#bd2828'><b><u>{}</u></b></span>"
-      }
-    },
-    "actions": {
-      "on-click": "mode"
-    }
+
+  // -------------------Center-------------------
+  "custom/calendar": {
+    "format": "{}",
+    "interval": 1,
+    "exec": "date '+%H:%M'",
+    "on-click": "kitty --title lvsk-calendar -e lvsk-calendar-launcher",
+    "tooltip": false,
   },
+
+  //  --------------------Left-------------------
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "active": "",
-      "default": ""
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      // "active": "",
+      // "default": "k"
     },
     "persistent-workspaces": {
-      "*": 5 // 5 workspaces by default on every monitor
-    }
+      "*": 5, // 5 workspaces by default on every monitor
+    },
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󰂚",
+      "inhibited-none": "󰂚",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰂛",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 8,
+  },
+  // --------------------Right-------------------
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 40,
+    "separate-outputs": true,
+    "rewrite": {
+      "(.*) — Brave": "󰈹 $1",
+      "(.*) - kitty": "  $1",
+      "(.*) - Dolphin": "󰉋 $1",
+      "": "",
+    },
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",
@@ -66,44 +89,52 @@
       "phone-muted": "",
       "portable": "",
       "car": "",
-      "default": [
-        "󰕿",
-        "",
-        "󰕾"
-      ]
+      "default": ["󰕿", "", "󰕾"],
     },
     "scroll-step": 1,
     "on-click": "pavucontrol",
-    "ignored-sinks": [
-      "Easy Effects Sink"
-    ]
+    "ignored-sinks": ["Easy Effects Sink"],
+  },
+  "cava": {
+    // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+    "framerate": 30,
+    "autosens": 0,
+    "sensitivity": 0.1,
+    "bars": 14,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+    "hide_on_silence": false,
+    // "format_silent": "quiet",
+    "method": "pulse",
+    "source": "auto",
+    "stereo": true,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.27,
+    "input_delay": 2,
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "actions": {
+      "on-click-right": "mode",
+    },
   },
   "network": {
-    // "interface": "wlan0",
-    // "format": "{ifname}",
-    "format-wifi": "{icon}",
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ],
-    "format-ethernet": "󰊗",
-    "format-disconnected": "",
-    // "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-    // "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected"
-    // "max-length": 1
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀  {ipaddr}",
+    "format-linked": "󰈀  {ifname} (No IP)",
+    "format-disconnected": "󰝦  Disconnected",
+    "tooltip-format-wifi": "  {essid} ({signalPercent}%)",
+    "tooltip-format-ethernet": "󰈀  {ifname}",
+    "on-click": "~/.config/waybar/scripts/rofi-network-manager.sh",
   },
+
+  "custom/fcitx": {
+    "exec": "~/.config/waybar/scripts/fcitx-status.sh",
+    "restart-interval": 0,
+  },
+
   "battery": {
-    "format": "{capacity}"
+    "format": "{capacity}",
   },
-  "custom/notification": {
-    "tooltip": false,
-    "format": "",
-    "on-click": "swaync-client -t -sw",
-    "escape": true
-  }
 }
