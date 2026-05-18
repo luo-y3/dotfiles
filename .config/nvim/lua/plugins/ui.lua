@@ -10,6 +10,10 @@ return {
         },
         opts = { skip = true },
       })
+
+      -- FIX: restored cond + view logic that was incorrectly commented out.
+      -- Previously this skipped ALL notify events unconditionally.
+      -- Now it only skips (via notify_send) when the window is not focused.
       local focused = true
       vim.api.nvim_create_autocmd("FocusGained", {
         callback = function()
@@ -23,15 +27,13 @@ return {
       })
       table.insert(opts.routes, 1, {
         filter = {
-          -- cond = function()
-          -- return not focused
-          -- end,
-          -- },
-          -- view = "notify_send",
-          -- opts = { stop = false },
+          cond = function()
+            return not focused
+          end,
           event = "notify",
         },
-        opts = { skip = true },
+        view = "notify_send",
+        opts = { stop = false },
       })
 
       opts.commands = {
@@ -83,7 +85,6 @@ return {
     opts = {
       options = {
         theme = "zen_sight",
-        -- theme = "solarized_dark",
         component_separators = "",
         section_separators = { left = "", right = "" },
       },
@@ -119,27 +120,26 @@ return {
       dashboard = {
         preset = {
           header = [[
-
-███████╗██╗  ██╗███████╗███╗   ██╗ ██████╗ ███╗   ██╗██╗ █████╗ ███╗   ██╗
-╚══███╔╝██║  ██║██╔════╝████╗  ██║██╔════╝ ████╗  ██║██║██╔══██╗████╗  ██║
-  ███╔╝ ███████║█████╗  ██╔██╗ ██║██║  ███╗██╔██╗ ██║██║███████║██╔██╗ ██║
- ███╔╝  ██╔══██║██╔══╝  ██║╚██╗██║██║   ██║██║╚██╗██║██║██╔══██║██║╚██╗██║
-███████╗██║  ██║███████╗██║ ╚████║╚██████╔╝██║ ╚████║██║██║  ██║██║ ╚████║
-╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+██╗      █████╗ ███████╗██╗   ██╗██████╗ ███████╗██╗   ██╗
+██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██╔══██╗██╔════╝██║   ██║
+██║     ███████║  ███╔╝  ╚████╔╝ ██║  ██║█████╗  ██║   ██║
+██║     ██╔══██║ ███╔╝    ╚██╔╝  ██║  ██║██╔══╝  ╚██╗ ██╔╝
+███████╗██║  ██║███████╗   ██║   ██████╔╝███████╗ ╚████╔╝ 
+╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═════╝ ╚══════╝  ╚═══╝  
    ]],
           keys = {
-            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
             {
-              icon = " ",
+              icon = " ",
               key = "c",
               desc = "Config",
               action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
             },
-            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            { icon = " ", key = "l", desc = "Lazy", action = ":Lazy" },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
       },
