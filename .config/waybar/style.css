@@ -15,164 +15,132 @@
 }
 
 window#waybar {
-  background: none;
-  color: @base0;
+  background: transparent;
 }
 
-.modules-left {
-  /* padding: 2px 2px; */
-  /* margin: 2px; */
-  /* border-radius: 10px; */
+/* shared pill styling */
+#workspaces,
+#window,
+#clock,
+#custom-notification,
+#language,
+#pulseaudio,
+#network,
+#battery {
+  background-color: @surface;
+  color: @text;
+  border-radius: 14px;
+  padding: 4px 12px;
+  margin: 0 3px;
 }
 
-.modules-center {
-  padding: 2px 2px;
-  /* margin: 2px; */
-  /* border-radius: 10px; */
-}
-
-.modules-right {
-  /* padding: 2px 2px; */
-  /* margin: 2px; */
-  /* border-radius: 10px; */
-  /* background: alpha(grey, .6); */
-}
-
-tooltip {
-  background: @base02;
-  color: @base0;
-  padding: 5px 5px;
-  border-radius: 10;
-}
-
-#custom-pacman:hover,
-#custom-notification:hover,
-#bluetooth:hover,
-#network:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#temperature:hover {
-  transition: all 200ms ease-in-out;
-  color: @base0;
-}
-
-#custom-notification {
-  padding: 0px 5px;
-  transition: all 0.3s ease-in-out;
-  color: @base0;
-}
-
-#custom-calendar {
-  font-family: "Noto Sans CJK SC";
-  color: @base0;
-}
-
+/* WORKSPACES ------------------------------------------------------- */
 #workspaces {
-  /* background-color: red; */
-  /* min-width: 100px; */
-  /* font-size: 0.1rem; */
-  padding: 0px 2px;
-  margin: 10px 0;
-  border-radius: 66px;
-}
-
-#workspaces button {
-  background-color: @base02;
-  color: transparent;
-  padding: 0px 5px;
-  margin: 0px 1px;
-  border-radius: 9px;
-  min-width: 9px;
-}
-
-#workspaces button:hover {
-  color: @green;
-}
-
-#workspaces button.active {
-  min-width: 1.5rem;
-  background: @cyan;
-  color: @cursor;
-  border: none;
-  border-radius: 10px;
-  transition: none;
-}
-
-#window {
-  /* background: @base3; */
-  color: @base0;
-  font-size: 15;
-  border-radius: 99px;
-  /* margin: 7px 0px; */
   padding: 2px 6px;
 }
 
-#bluetooth {
-  padding: 0 10px 0 5px;
-  margin: 2px 0;
-  transition: all 0.3s ease;
-  color: white;
+#workspaces button {
+  color: @muted;
+  padding: 0 6px;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button.active {
+  color: @bg;
+  background-color: @primary;
+}
+
+#workspaces button.urgent {
+  color: @bg;
+  background-color: @accent_blue;
+}
+
+#workspaces button:hover {
+  background-color: alpha(@primary, 0.25);
+  color: @text;
+}
+
+/* WINDOW TITLE ------------------------------------------------------ */
+#window {
+  color: @muted;
+  font-weight: 400;
+}
+
+/* CLOCK -------------------------------------------------------------- */
+#clock {
+  color: @text;
+  font-weight: 600;
+  background-color: @primary;
+  color: @bg;
+}
+
+/* RIGHT MODULES ------------------------------------------------------ */
+#custom-notification {
+  color: @accent_blue;
+  padding: 0 8 2 6px;
+}
+
+#language {
+  color: @accent_blue;
+  font-weight: 700;
 }
 
 #pulseaudio {
-  background-color: @base02;
-  padding: 0 10px 0 5px;
-  margin: 10px 0;
-  border-radius: 0px 10px 10px 0px;
+  color: @text;
 }
 
-#cava {
-  /* margin: 0 0 0 0; */
-  font-size: 0.7rem;
-  letter-spacing: 1px;
+#pulseaudio.muted {
+  color: @muted;
 }
 
 #network {
-  border-radius: 3px;
-  padding: 0 5px;
-  margin: 10px 0;
-  transition: all 0.3s ease;
-  color: @base0;
-  background: @base01;
+  color: @text;
+}
+
+#network.disconnected {
+  color: @accent_blue;
 }
 
 #battery {
-  padding: 0px 5px;
-  margin: 10px 0;
-  background-color: @green;
-  color: @base03;
-  border-radius: 10px;
-}
-
-#battery.charging {
-  background-color: @green;
+  color: @text;
 }
 
 #battery.warning:not(.charging) {
-  background-color: @yellow;
+  color: #e0b972;
 }
 
 #battery.critical:not(.charging) {
-  background-color: @red;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  color: #c77b6c;
+  background-color: @surface;
 }
 
-#cpu,
-#memory,
-#temperature {
-  padding: 0px 5px;
-  color: white;
+#battery.charging {
+  color: @primary;
+}
+
+/* TOOLTIPS ------------------------------------------------------------ */
+tooltip {
+  background: @surface;
+  border: 1px solid @primary;
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: @text;
+  padding: 4px;
+}
+
+/* CALENDAR ------------------------------------------------------------ */
+#calendar {
+  background: @surface;
+  color: @text;
 }
 
 #custom-fcitx {
-  background: @base01;
+  background: @surface;
   color: @base0;
-  margin: 10px 2px;
+  margin: 2px;
   padding: 0 4px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
