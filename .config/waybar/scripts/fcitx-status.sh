@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-
 print_lang() {
   local name
   name=$(fcitx5-remote -n)
-
   case "$name" in
   keyboard-us)
     echo "英"
@@ -23,8 +21,12 @@ print_lang() {
   esac
 }
 
-print_lang
-
-fcitx5-remote -m | while read -r _; do
-  print_lang
+last=""
+while true; do
+  cur=$(fcitx5-remote -n)
+  if [ "$cur" != "$last" ]; then
+    print_lang
+    last="$cur"
+  fi
+  sleep 0.3
 done
