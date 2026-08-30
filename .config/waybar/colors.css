@@ -26,3 +26,10 @@
 @define-color bracket #cb4db0;
 @define-color bficonbase #415a4a;
 @define-color bficonactive #69bf9b;
+
+@define-color bg          #1E2220;
+@define-color surface     #252A27;
+@define-color primary     #8EA58C;
+@define-color text        #E7ECE5;
+@define-color muted       #AAB5A6;
+@define-color accent_blue #7A9BB8;
